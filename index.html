@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FYP King – ভাইরাল হওয়ার #১ অ্যাপ</title>
 <meta name="description" content="৬০ দিনের চ্যালেঞ্জে যোগ দিন। TikTok, Facebook Reels, YouTube Shorts-এ ভাইরাল হন।">
+<!-- ========== Google Tag Manager HEAD ========== -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PB2WNSDS');</script>
+<!-- ========== End Google Tag Manager HEAD ========== -->
+
+<!-- ========== Meta Pixel + TikTok Pixel managed via GTM-PB2WNSDS ========== -->
+<!-- Pixel ID: 1640902397253149 — loaded through GTM, no direct code needed here -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -175,6 +186,14 @@ footer{text-align:center;padding:38px 20px;background:var(--dark);border-top:1px
 </style>
 </head>
 <body>
+
+<!-- ========== Google Tag Manager BODY (noscript) ========== -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PB2WNSDS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- ========== End Google Tag Manager BODY ========== -->
+
+<!-- dataLayer init — Events will fire from JS below -->
+<script>window.dataLayer = window.dataLayer || [];</script>
 
 <div class="bg-mesh"></div>
 <div class="particles" id="pts"></div>
@@ -414,6 +433,87 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
     if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
   });
 });
+
+/* ============================================================
+   GTM / dataLayer — Conversion Event Tracking
+   GTM ID: GTM-PB2WNSDS | Site: fyp-king-mobile.vercel.app
+   ============================================================ */
+
+// Helper: push event to dataLayer (GTM picks this up)
+function dlPush(eventName, params){
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(Object.assign({event: eventName}, params || {}));
+}
+
+// 1) APK Download button clicks
+document.querySelectorAll('a[href*="FYP_King.apk"]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    // GTM dataLayer event — GTM-এ "apk_download" নামে Trigger বানাও
+    dlPush('apk_download', {
+      button_location: btn.closest('nav') ? 'navbar' :
+                       btn.closest('.fbar') ? 'floating_bar' : 'page_body'
+    });
+    // GTM dataLayer-এ event push করলেই GTM নিজে FB + TikTok Pixel-এ fire করবে
+    // নিচে window.fbq / ttq check শুধু safety fallback হিসেবে আছে
+    if(window.fbq){ fbq('track', 'Lead'); fbq('trackCustom', 'APK_Download'); }
+    if(window.ttq){ ttq.track('Download'); }
+  });
+});
+
+// 2) WhatsApp / Contact button click
+document.querySelectorAll('a[href*="wa.me"]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    dlPush('whatsapp_contact', { label: 'admin_contact' });
+    if(window.fbq){ fbq('track', 'Contact'); }
+    if(window.ttq){ ttq.track('Contact'); }
+  });
+});
+
+// 3) Bkash number copy
+var origCpNum = cpNum;
+cpNum = function(){
+  origCpNum();
+  dlPush('bkash_number_copy', { number: '01859393487' });
+  if(window.fbq){ fbq('trackCustom', 'BkashCopy'); }
+};
+
+// 4) Activate button click
+document.querySelectorAll('a[href="#payment"]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    dlPush('activate_click', { label: 'payment_section' });
+    if(window.fbq){ fbq('trackCustom', 'ActivateClick'); }
+  });
+});
+
+// 5) Page scroll depth tracking (25%, 50%, 75%, 90%)
+(function(){
+  var fired = {};
+  window.addEventListener('scroll', function(){
+    var pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+    [25,50,75,90].forEach(function(d){
+      if(pct >= d && !fired[d]){
+        fired[d] = true;
+        dlPush('scroll_depth', { depth: d + '%' });
+      }
+    });
+  }, {passive: true});
+})();
+
+// 6) Time on page — 30s, 60s, 120s
+(function(){
+  var fired = {};
+  [30,60,120].forEach(function(sec){
+    setTimeout(function(){
+      if(!fired[sec]){
+        fired[sec] = true;
+        dlPush('time_on_page', { seconds: sec });
+        if(window.fbq && sec === 60){ fbq('trackCustom', 'EngagedVisit'); }
+      }
+    }, sec * 1000);
+  });
+})();
+
+console.log('%c[FYP King] GTM Active ✅ | GTM-PB2WNSDS | FB Pixel: 1640902397253149', 'color:#e040fb;font-weight:bold;font-size:13px;');
 </script>
 </body>
 </html>
