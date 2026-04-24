@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FYP King ডাউনলোড করো — ভাইরাল হওয়ার অ্যাপ</title>
+
+<!-- GTM -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PB2WNSDS');</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --p1:#e040fb;--p2:#7c4dff;--p3:#00e5ff;--gold:#ffd740;
+  --dark:#06060f;--dark2:#0d0d1f;
+  --glass:rgba(255,255,255,0.06);--gb:rgba(255,255,255,0.14);
+  --text:#f0eeff;--muted:rgba(240,238,255,0.6);--dim:rgba(240,238,255,0.3);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Hind Siliguri',sans-serif;
+  background:var(--dark);color:var(--text);
+  min-height:100vh;overflow-x:hidden;
+}
+
+/* ── BG ── */
+.bg{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 0%,rgba(124,77,255,.25),transparent 60%),
+    radial-gradient(ellipse 50% 60% at 80% 100%,rgba(224,64,251,.2),transparent 60%),
+    radial-gradient(ellipse 40% 40% at 60% 40%,rgba(0,229,255,.08),transparent 55%);
+  animation:hue 14s ease-in-out infinite alternate;
+}
+@keyframes hue{0%{filter:hue-rotate(0deg);}100%{filter:hue-rotate(20deg);}}
+
+/* ── HEADER ── */
+header{
+  position:relative;z-index:10;
+  padding:18px 20px;
+  display:flex;align-items:center;justify-content:center;
+  border-bottom:1px solid var(--gb);
+  background:rgba(6,6,15,.7);backdrop-filter:blur(20px);
+}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo-box{
+  width:40px;height:40px;border-radius:12px;
+  background:linear-gradient(135deg,var(--p1),var(--p2));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Baloo Da 2',sans-serif;font-weight:800;font-size:17px;color:#fff;
+  box-shadow:0 0 20px rgba(224,64,251,.45);
+}
+.logo-name{
+  font-family:'Baloo Da 2',sans-serif;font-weight:800;font-size:22px;
+  background:linear-gradient(135deg,var(--p1),var(--p3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+/* ── MAIN WRAPPER ── */
+.page{
+  position:relative;z-index:1;
+  min-height:calc(100vh - 73px);
+  display:flex;flex-direction:column;align-items:center;
+  padding:32px 16px 48px;
+  max-width:520px;margin:0 auto;
+}
+
+/* ── TOP BADGE ── */
+.top-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,215,64,.1);border:1px solid rgba(255,215,64,.35);
+  color:var(--gold);padding:7px 18px;border-radius:50px;
+  font-size:13px;font-weight:700;margin-bottom:22px;
+  backdrop-filter:blur(10px);
+  animation:badgePulse 2.5s ease-in-out infinite;
+}
+@keyframes badgePulse{0%,100%{box-shadow:0 0 0 0 rgba(255,215,64,0);}50%{box-shadow:0 0 0 6px rgba(255,215,64,.1);}}
+.bdot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:blink 1.4s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+
+/* ── TITLE ── */
+.page-title{
+  font-family:'Baloo Da 2',sans-serif;
+  font-size:clamp(22px,5.5vw,32px);font-weight:800;
+  text-align:center;line-height:1.25;margin-bottom:8px;
+}
+.grad{
+  background:linear-gradient(135deg,var(--p1),var(--p2),var(--p3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.page-sub{
+  font-size:14px;color:var(--muted);text-align:center;
+  margin-bottom:28px;line-height:1.65;max-width:400px;
+}
+
+/* ── VIDEO CONTAINER ── */
+.video-wrap{
+  width:100%;border-radius:24px;overflow:hidden;
+  position:relative;
+  background:#000;
+  border:1px solid var(--gb);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.05),
+    0 8px 40px rgba(0,0,0,.6),
+    0 0 60px rgba(124,77,255,.15);
+  margin-bottom:10px;
+}
+
+/* Glowing border animation */
+.video-wrap::before{
+  content:'';position:absolute;inset:-1px;border-radius:25px;z-index:2;pointer-events:none;
+  background:linear-gradient(135deg,var(--p1),var(--p2),var(--p3),var(--p1));
+  background-size:300% 300%;
+  animation:borderGlow 4s linear infinite;
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  padding:1.5px;
+}
+@keyframes borderGlow{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+
+video{
+  width:100%;display:block;
+  border-radius:22px;
+  aspect-ratio:9/16;
+  object-fit:cover;
+  background:#000;
+}
+
+/* MUTE INDICATOR */
+.mute-hint{
+  position:absolute;top:14px;right:14px;z-index:5;
+  background:rgba(0,0,0,.6);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:50px;padding:6px 12px;
+  font-size:12px;color:rgba(255,255,255,.8);font-weight:600;
+  display:flex;align-items:center;gap:5px;
+  cursor:pointer;transition:all .2s;
+  user-select:none;
+}
+.mute-hint:hover{background:rgba(255,255,255,.15);}
+
+/* PROGRESS BAR */
+.video-progress{
+  position:absolute;bottom:0;left:0;right:0;height:3px;z-index:5;
+  background:rgba(255,255,255,.15);
+}
+.progress-fill{
+  height:100%;width:0%;
+  background:linear-gradient(90deg,var(--p1),var(--p3));
+  transition:width .3s linear;
+}
+
+/* PLAY OVERLAY (when paused) */
+.play-overlay{
+  position:absolute;inset:0;z-index:4;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.4);backdrop-filter:blur(2px);
+  border-radius:22px;cursor:pointer;
+  opacity:0;pointer-events:none;
+  transition:opacity .25s;
+}
+.play-overlay.show{opacity:1;pointer-events:all;}
+.play-btn{
+  width:64px;height:64px;border-radius:50%;
+  background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.5);
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;color:#fff;
+  backdrop-filter:blur(10px);
+  transition:transform .2s;
+}
+.play-btn:hover{transform:scale(1.1);}
+
+/* WATCH LABEL */
+.watch-label{
+  font-size:12px;color:var(--dim);text-align:center;margin-bottom:24px;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.watch-label span{color:var(--p1);font-weight:600;}
+
+/* ── DOWNLOAD BUTTON ── */
+.dl-btn{
+  width:100%;display:flex;align-items:center;justify-content:center;gap:12px;
+  background:linear-gradient(135deg,var(--p1),var(--p2),var(--p3));
+  background-size:200% 200%;
+  color:#fff;padding:20px 28px;border-radius:18px;
+  font-size:20px;font-weight:800;font-family:'Baloo Da 2',sans-serif;
+  text-decoration:none;border:none;cursor:pointer;
+  box-shadow:0 8px 32px rgba(124,77,255,.45),0 0 0 1px rgba(255,255,255,.08);
+  animation:gSh 3s ease infinite,dlGlow 2.5s ease-in-out infinite;
+  transition:transform .2s;position:relative;overflow:hidden;
+  margin-bottom:14px;
+}
+@keyframes gSh{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+@keyframes dlGlow{0%,100%{box-shadow:0 8px 32px rgba(124,77,255,.4);}50%{box-shadow:0 12px 50px rgba(224,64,251,.7);}}
+.dl-btn:hover{transform:translateY(-3px) scale(1.01);}
+.dl-btn::after{
+  content:'';position:absolute;top:-50%;left:-75%;
+  width:50%;height:200%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
+  transform:skewX(-20deg);
+  animation:shine 3.5s ease-in-out infinite;
+}
+@keyframes shine{0%,100%{left:-75%;}40%,60%{left:125%;}}
+.dl-icon{font-size:24px;animation:bounce 1.2s ease-in-out infinite;}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+
+/* ── FEATURES ROW ── */
+.feats{
+  display:flex;gap:10px;flex-wrap:wrap;justify-content:center;
+  margin-bottom:24px;
+}
+.feat-pill{
+  display:flex;align-items:center;gap:7px;
+  background:var(--glass);border:1px solid var(--gb);
+  backdrop-filter:blur(14px);
+  padding:9px 14px;border-radius:50px;
+  font-size:13px;font-weight:600;color:var(--muted);
+}
+.feat-pill span:first-child{font-size:16px;}
+
+/* ── INFO CARDS ── */
+.info-row{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:10px;width:100%;margin-bottom:24px;
+}
+.info-card{
+  background:var(--glass);border:1px solid var(--gb);
+  backdrop-filter:blur(16px);border-radius:16px;
+  padding:16px 14px;text-align:center;
+  box-shadow:0 4px 20px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.08);
+}
+.info-num{
+  font-family:'Baloo Da 2',sans-serif;font-size:22px;font-weight:800;
+  background:linear-gradient(135deg,var(--p1),var(--p3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.info-lbl{font-size:11px;color:var(--dim);margin-top:2px;}
+
+/* ── SAFE BADGE ── */
+.safe-row{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  font-size:12px;color:var(--dim);margin-bottom:28px;
+}
+.safe-icon{font-size:15px;}
+
+/* ── STEPS ── */
+.steps-title{
+  font-family:'Baloo Da 2',sans-serif;font-size:16px;font-weight:700;
+  color:var(--muted);margin-bottom:14px;text-align:center;
+}
+.steps{display:flex;flex-direction:column;gap:10px;width:100%;margin-bottom:28px;}
+.step{
+  display:flex;align-items:center;gap:12px;
+  background:var(--glass);border:1px solid var(--gb);
+  backdrop-filter:blur(14px);border-radius:14px;padding:13px 16px;
+}
+.step-n{
+  width:28px;height:28px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--p1),var(--p2));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Baloo Da 2',sans-serif;font-size:13px;font-weight:800;color:#fff;
+  box-shadow:0 3px 12px rgba(124,77,255,.4);
+}
+.step-txt{font-size:13px;color:var(--muted);line-height:1.5;}
+.step-txt strong{color:var(--text);}
+
+/* ── SECOND DOWNLOAD BTN ── */
+.dl-btn2{
+  width:100%;display:flex;align-items:center;justify-content:center;gap:10px;
+  background:linear-gradient(135deg,var(--p1),var(--p2));
+  color:#fff;padding:17px 24px;border-radius:14px;
+  font-size:17px;font-weight:800;font-family:'Baloo Da 2',sans-serif;
+  text-decoration:none;border:none;cursor:pointer;
+  box-shadow:0 6px 24px rgba(124,77,255,.4);
+  transition:all .25s;
+}
+.dl-btn2:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(224,64,251,.55);}
+
+/* ── BACK LINK ── */
+.back-link{
+  display:flex;align-items:center;gap:6px;
+  color:var(--dim);font-size:13px;text-decoration:none;
+  margin-top:20px;transition:color .2s;
+}
+.back-link:hover{color:var(--muted);}
+
+/* ── TOAST ── */
+#dlToast{
+  position:fixed;top:80px;left:50%;transform:translateX(-50%) translateY(-10px);
+  background:rgba(0,200,100,.15);border:1px solid rgba(0,200,100,.4);
+  backdrop-filter:blur(20px);color:#00e676;
+  padding:12px 24px;border-radius:50px;font-size:14px;font-weight:700;
+  opacity:0;transition:all .35s;z-index:999;pointer-events:none;
+  display:flex;align-items:center;gap:8px;
+}
+#dlToast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+</style>
+</head>
+<body>
+
+<!-- GTM noscript -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PB2WNSDS" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="bg"></div>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <div class="logo-box">FK</div>
+    <div class="logo-name">FYP King</div>
+  </div>
+</header>
+
+<!-- PAGE CONTENT -->
+<div class="page">
+
+  <!-- TOP BADGE -->
+  <div class="top-badge">
+    <div class="bdot"></div>
+    ৬০ দিনের ভাইরাল চ্যালেঞ্জ অপেক্ষা করছে!
+  </div>
+
+  <!-- TITLE -->
+  <h1 class="page-title">
+    ডাউনলোডের আগে<br>
+    <span class="grad">একটু দেখো 👇</span>
+  </h1>
+  <p class="page-sub">এই ছোট ভিডিওটা দেখলেই বুঝবে FYP King কীভাবে তোমার কন্টেন্ট জার্নি বদলে দেবে।</p>
+
+  <!-- VIDEO -->
+  <div class="video-wrap">
+
+    <video
+      id="promoVid"
+      src="promo.mp4"
+      playsinline
+      muted
+      autoplay
+      loop
+      preload="auto"
+    ></video>
+
+    <!-- Mute toggle -->
+    <div class="mute-hint" id="muteBtn" onclick="toggleMute()">
+      <span id="muteIcon">🔇</span>
+      <span id="muteText">ট্যাপ করো শুনতে</span>
+    </div>
+
+    <!-- Play overlay (shows when paused) -->
+    <div class="play-overlay" id="playOverlay" onclick="playVid()">
+      <div class="play-btn">▶</div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="video-progress">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+  </div>
+
+  <p class="watch-label">
+    🎬 ভিডিওটি <span>Auto Play</span> হচ্ছে — শব্দ শুনতে ট্যাপ করো
+  </p>
+
+  <!-- PRIMARY DOWNLOAD BUTTON -->
+  <a href="FYP_King.apk" download id="mainDlBtn" class="dl-btn" onclick="trackDownload()">
+    <span class="dl-icon">⬇</span>
+    FYP King APK ডাউনলোড করো
+  </a>
+
+  <!-- FEATURE PILLS -->
+  <div class="feats">
+    <div class="feat-pill"><span>✅</span> ফ্রি ডাউনলোড</div>
+    <div class="feat-pill"><span>📱</span> Android সাপোর্টেড</div>
+    <div class="feat-pill"><span>🇧🇩</span> বাংলায় সব কিছু</div>
+    <div class="feat-pill"><span>🔒</span> ১০০% নিরাপদ</div>
+  </div>
+
+  <!-- INFO CARDS -->
+  <div class="info-row">
+    <div class="info-card">
+      <div class="info-num">৬০</div>
+      <div class="info-lbl">দিনের চ্যালেঞ্জ</div>
+    </div>
+    <div class="info-card">
+      <div class="info-num">৩টি</div>
+      <div class="info-lbl">প্ল্যাটফর্ম</div>
+    </div>
+    <div class="info-card">
+      <div class="info-num">৫০০০+</div>
+      <div class="info-lbl">সফল ক্রিয়েটর</div>
+    </div>
+    <div class="info-card">
+      <div class="info-num">৪৯৯৳</div>
+      <div class="info-lbl">একটিভেশন ফি</div>
+    </div>
+  </div>
+
+  <!-- SAFE -->
+  <div class="safe-row">
+    <span class="safe-icon">🛡️</span>
+    Virus-free • Verified APK • ৮.৪ MB সাইজ
+  </div>
+
+  <!-- INSTALL STEPS -->
+  <p class="steps-title">কীভাবে ইনস্টল করবে?</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-n">১</div>
+      <div class="step-txt"><strong>ডাউনলোড করো</strong> — নিচের বাটনে ক্লিক করলেই APK ডাউনলোড শুরু হবে।</div>
+    </div>
+    <div class="step">
+      <div class="step-n">২</div>
+      <div class="step-txt"><strong>Allow করো</strong> — ফোনে "Unknown Sources" বা "Install Unknown Apps" চালু করো।</div>
+    </div>
+    <div class="step">
+      <div class="step-n">৩</div>
+      <div class="step-txt"><strong>ইনস্টল করো</strong> — Downloads ফোল্ডার থেকে APK খুলে Install করো।</div>
+    </div>
+    <div class="step">
+      <div class="step-n">৪</div>
+      <div class="step-txt"><strong>রেজিস্ট্রেশন করো</strong> — অ্যাপ খুলে একাউন্ট তৈরি করো, তারপর ৪৯৯৳ পেমেন্ট করে একটিভেট করো।</div>
+    </div>
+  </div>
+
+  <!-- SECOND DOWNLOAD BTN -->
+  <a href="FYP_King.apk" download class="dl-btn2" onclick="trackDownload()">
+    ⬇ এখনই ডাউনলোড করো — ফ্রি!
+  </a>
+
+  <!-- BACK LINK -->
+  <a href="index.html" class="back-link">← মূল পেজে ফিরে যাও</a>
+
+</div>
+
+<!-- DOWNLOAD TOAST -->
+<div id="dlToast">✅ ডাউনলোড শুরু হয়েছে! Enjoy করো 🎉</div>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+
+var vid = document.getElementById('promoVid');
+var muteBtn = document.getElementById('muteBtn');
+var muteIcon = document.getElementById('muteIcon');
+var muteText = document.getElementById('muteText');
+var playOverlay = document.getElementById('playOverlay');
+var progressFill = document.getElementById('progressFill');
+
+// ── Autoplay with mute fallback ──
+window.addEventListener('load', function(){
+  vid.muted = true;
+  vid.play().then(function(){
+    // Playing muted
+  }).catch(function(){
+    playOverlay.classList.add('show');
+  });
+});
+
+// ── Mute toggle ──
+function toggleMute(){
+  if(vid.muted){
+    vid.muted = false;
+    muteIcon.textContent = '🔊';
+    muteText.textContent = 'শুনছো';
+    muteBtn.style.background = 'rgba(124,77,255,.4)';
+    muteBtn.style.borderColor = 'rgba(124,77,255,.6)';
+    // Push unmute event
+    window.dataLayer.push({event:'video_unmute'});
+  } else {
+    vid.muted = true;
+    muteIcon.textContent = '🔇';
+    muteText.textContent = 'ট্যাপ করো শুনতে';
+    muteBtn.style.background = '';
+    muteBtn.style.borderColor = '';
+  }
+}
+
+// ── Play on overlay click ──
+function playVid(){
+  vid.play();
+  playOverlay.classList.remove('show');
+}
+
+// ── Click on video to pause/play ──
+vid.addEventListener('click', function(){
+  if(vid.paused){
+    vid.play();
+    playOverlay.classList.remove('show');
+  } else {
+    vid.pause();
+    playOverlay.classList.add('show');
+  }
+});
+
+// ── Progress bar ──
+vid.addEventListener('timeupdate', function(){
+  if(vid.duration){
+    var pct = (vid.currentTime / vid.duration) * 100;
+    progressFill.style.width = pct + '%';
+  }
+});
+
+// ── Video milestones (25%, 50%, 75%) ──
+var milestones = {25:false, 50:false, 75:false, 100:false};
+vid.addEventListener('timeupdate', function(){
+  if(!vid.duration) return;
+  var pct = Math.floor((vid.currentTime / vid.duration) * 100);
+  [25,50,75].forEach(function(m){
+    if(pct >= m && !milestones[m]){
+      milestones[m] = true;
+      window.dataLayer.push({event:'video_progress', percent: m});
+      if(window.fbq) fbq('trackCustom','VideoWatch'+m);
+      if(window.ttq) ttq.track('ViewContent');
+    }
+  });
+});
+
+// ── Download tracking ──
+function trackDownload(){
+  window.dataLayer.push({event:'apk_download', source:'download_page'});
+  if(window.fbq){ fbq('track','Lead'); fbq('trackCustom','APK_Download'); }
+  if(window.ttq){ ttq.track('Download'); }
+
+  // Show toast
+  var toast = document.getElementById('dlToast');
+  toast.classList.add('show');
+  setTimeout(function(){ toast.classList.remove('show'); }, 4000);
+}
+
+// ── PageView ──
+window.dataLayer.push({event:'download_page_view'});
+if(window.fbq){ fbq('track','PageView'); }
+
+console.log('%c[FYP King] Download Page Active ✅', 'color:#e040fb;font-weight:bold;');
+</script>
+</body>
+</html>
