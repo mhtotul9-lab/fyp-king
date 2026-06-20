@@ -278,18 +278,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="psub">একটিভেশন ফি — একবারই দিতে হবে, আজীবন এক্সেস</div>
       <div onclick="cpNum()" class="nd" title="কপি করতে ক্লিক করো">
         <span style="font-size:22px;">📱</span>
-        <div class="nt">01859-393487</div>
+        <div class="nt">01813-276507</div>
         <span style="font-size:16px;color:var(--muted);">📋</span>
       </div>
       <p class="ch">👆 নম্বরটি কপি করতে ক্লিক করো</p>
       <div class="bss">
         <div class="bs"><div class="bn">১</div> বিকাশ অ্যাপ খোলো → "Send Money" সিলেক্ট করো</div>
-        <div class="bs"><div class="bn">২</div> নম্বর: <strong style="color:var(--text);">01859-393487</strong> লিখো</div>
+        <div class="bs"><div class="bn">২</div> নম্বর: <strong style="color:var(--text);">01813-276507</strong> লিখো</div>
         <div class="bs"><div class="bn">৩</div> Amount: <strong style="color:var(--text);">৪৯৯ টাকা</strong> লিখো এবং পেমেন্ট করো</div>
         <div class="bs"><div class="bn">৪</div> Transaction ID নোট করো</div>
         <div class="bs"><div class="bn">৫</div> তোমার নম্বর + TrxID দিয়ে এডমিনকে WhatsApp করো</div>
       </div>
-      <a href="https://wa.me/8801859393487?text=%E0%A6%86%E0%A6%AE%E0%A6%BF%20FYP%20King%20%E0%A6%8F%E0%A6%95%E0%A6%9F%E0%A6%BF%E0%A6%AD%E0%A7%87%E0%A6%9F%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%E0%A5%A4%0A%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B6%20%E0%A6%A8%E0%A6%AE%E0%A7%8D%E0%A6%AC%E0%A6%B0%3A%20%0ATransaction%20ID%3A%20" target="_blank" class="cbtn">💬 WhatsApp-এ এডমিনকে জানাও</a>
+      <a href="https://wa.me/8801813276507?text=%E0%A6%86%E0%A6%AE%E0%A6%BF%20FYP%20King%20%E0%A6%8F%E0%A6%95%E0%A6%9F%E0%A6%BF%E0%A6%AD%E0%A7%87%E0%A6%9F%20%E0%A6%95%E0%A6%B0%E0%A6%A4%E0%A7%87%20%E0%A6%9A%E0%A6%BE%E0%A6%87%E0%A5%A4%0A%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B6%20%E0%A6%A8%E0%A6%AE%E0%A7%8D%E0%A6%AC%E0%A6%B0%3A%20%0ATransaction%20ID%3A%20" target="_blank" class="cbtn">💬 WhatsApp-এ এডমিনকে জানাও</a>
       <p style="font-size:11px;color:var(--dim);margin-top:12px;">⏰ সাধারণত ১–৬ ঘণ্টার মধ্যে Approval দেওয়া হয়</p>
     </div>
   </div>
@@ -404,7 +404,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 
 function cpNum(){
-  var n='01859393487';
+  var n='01813276507';
   if(navigator.clipboard){navigator.clipboard.writeText(n).then(showT);}
   else{var t=document.createElement('textarea');t.value=n;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);showT();}
 }
@@ -473,7 +473,7 @@ document.querySelectorAll('a[href*="wa.me"]').forEach(function(btn){
 var origCpNum = cpNum;
 cpNum = function(){
   origCpNum();
-  dlPush('bkash_number_copy', { number: '01859393487' });
+  dlPush('bkash_number_copy', { number: '01813276507' });
   if(window.fbq){ fbq('trackCustom', 'BkashCopy'); }
 };
 
