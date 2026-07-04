@@ -119,6 +119,18 @@ section{position:relative;z-index:1;padding:80px 20px;}
 .cbtn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--bkash),#c2185b);color:#fff;padding:14px 28px;border-radius:50px;font-size:15px;font-weight:700;font-family:'Baloo Da 2',sans-serif;text-decoration:none;border:none;cursor:pointer;box-shadow:0 8px 28px rgba(226,19,110,.45);transition:all .25s;}
 .cbtn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(226,19,110,.6);}
 
+/* COUPON */
+.price-old{font-size:26px;color:var(--dim);text-decoration:line-through;margin-right:8px;font-weight:600;}
+.coupon-wrap{margin:0 0 20px;}
+.coupon-row{display:flex;gap:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:6px;backdrop-filter:blur(10px);}
+.coupon-input{flex:1;min-width:0;background:transparent;border:none;outline:none;color:var(--text);font-family:'Hind Siliguri',sans-serif;font-size:14px;padding:10px 12px;}
+.coupon-input::placeholder{color:var(--dim);}
+.coupon-btn{background:linear-gradient(135deg,var(--gold),#ffb300);color:#231800;border:none;border-radius:10px;padding:10px 18px;font-family:'Baloo Da 2',sans-serif;font-weight:800;font-size:13px;cursor:pointer;transition:transform .2s;}
+.coupon-btn:hover{transform:scale(1.05);}
+.coupon-msg{min-height:16px;font-size:12.5px;font-weight:600;margin-top:9px;}
+.coupon-msg.ok{color:#5eff9c;}
+.coupon-msg.err{color:#ff6b81;}
+
 /* FEATURES */
 .fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;}
 .fcard{padding:28px 22px;border-radius:22px;transition:all .3s;box-shadow:0 4px 24px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.08);}
@@ -234,7 +246,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="sc"><div class="sn">৬০+</div><div class="sl">দিনের চ্যালেঞ্জ</div></div>
       <div class="sc"><div class="sn">৫০০০+</div><div class="sl">সফল ক্রিয়েটর</div></div>
       <div class="sc"><div class="sn">৩টি</div><div class="sl">প্ল্যাটফর্ম</div></div>
-      <div class="sc"><div class="sn">৪৯৯৳</div><div class="sl">একটিভেশন ফি</div></div>
+      <div class="sc"><div class="sn">১২৯৯৳</div><div class="sl">একটিভেশন ফি</div></div>
     </div>
   </div>
 </section>
@@ -262,7 +274,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="sg">
       <div class="stc gl"><div class="snum">১</div><div class="sic">⬇️</div><div class="stt">APK ডাউনলোড</div><div class="sdc">FYP King APK ডাউনলোড করে Android ফোনে ইনস্টল করো।</div></div>
       <div class="stc gl"><div class="snum">২</div><div class="sic">📝</div><div class="stt">রেজিস্ট্রেশন</div><div class="sdc">অ্যাপে একাউন্ট তৈরি করো — Admin Approval পেন্ডিং দেখাবে।</div></div>
-      <div class="stc gl"><div class="snum">৩</div><div class="sic">💳</div><div class="stt">পেমেন্ট করো</div><div class="sdc">৪৯৯ টাকা বিকাশে পাঠাও এবং এডমিনকে জানাও।</div></div>
+      <div class="stc gl"><div class="snum">৩</div><div class="sic">💳</div><div class="stt">পেমেন্ট করো</div><div class="sdc"><span id="stepAmt3">১২৯৯</span> টাকা বিকাশে পাঠাও এবং এডমিনকে জানাও।</div></div>
       <div class="stc gl"><div class="snum">৪</div><div class="sic">🏆</div><div class="stt">ভাইরাল হও!</div><div class="sdc">Approval পেলে সব ফিচারে এক্সেস পাবে এবং শেখা শুরু করো।</div></div>
     </div>
   </div>
@@ -272,12 +284,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="tc" id="payment" style="background:linear-gradient(180deg,var(--dark2) 0%,var(--dark) 100%);">
   <div class="w">
     <div class="stag">একটিভেশন পেমেন্ট</div>
-    <h2 class="stl">একটিভেট করতে <span class="grad">৪৯৯ টাকা</span> পেমেন্ট করো</h2>
+    <h2 class="stl">একটিভেট করতে <span class="grad"><span id="headAmt">১২৯৯</span> টাকা</span> পেমেন্ট করো</h2>
     <p class="sds">অ্যাপ ইনস্টলের পর Admin Approval লাগবে। নিচের নিয়মে পেমেন্ট করো এবং এডমিনকে জানাও।</p>
 
     <div class="pflow">
       <div class="fc gl"><div class="sbg">১</div><div class="fi">📲</div><div class="ft">অ্যাপ ইনস্টল</div><div class="fd">FYP King APK ডাউনলোড করে ইনস্টল করো এবং রেজিস্ট্রেশন করো। Pending দেখাবে।</div></div>
-      <div class="fc gl"><div class="sbg">২</div><div class="fi">💸</div><div class="ft">বিকাশে পাঠাও</div><div class="fd">নিচের নম্বরে ৪৯৯ টাকা বিকাশ Personal-এ পাঠাও। Transaction ID সেভ করো।</div></div>
+      <div class="fc gl"><div class="sbg">২</div><div class="fi">💸</div><div class="ft">বিকাশে পাঠাও</div><div class="fd">নিচের নম্বরে <span id="stepAmt2">১২৯৯</span> টাকা বিকাশ Personal-এ পাঠাও। Transaction ID সেভ করো।</div></div>
       <div class="fc gl"><div class="sbg">৩</div><div class="fi">📞</div><div class="ft">এডমিনকে জানাও</div><div class="fd">যে নম্বর থেকে পাঠিয়েছ সেই নম্বর ও TrxID দিয়ে এডমিনকে WhatsApp করো।</div></div>
       <div class="fc gl"><div class="sbg">৪</div><div class="fi">✅</div><div class="ft">Approval পাও</div><div class="fd">এডমিন যাচাই করে Approve দিলে সব ফিচারে পূর্ণ এক্সেস পাবে।</div></div>
     </div>
@@ -288,8 +300,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="bb">b</div>
         <div><div style="font-weight:800;font-size:18px;color:#fff;">Bkash</div><div class="bbl">Personal Payment</div></div>
       </div>
-      <div class="price">৳ ৪৯৯</div>
+      <div class="price" id="priceDisplay">৳ ১২৯৯</div>
       <div class="psub">একটিভেশন ফি — একবারই দিতে হবে, আজীবন এক্সেস</div>
+
+      <!-- COUPON -->
+      <div class="coupon-wrap">
+        <div class="coupon-row">
+          <input type="text" id="couponInput" class="coupon-input" placeholder="কুপন কোড থাকলে লিখো" autocomplete="off">
+          <button type="button" onclick="applyCoupon()" class="coupon-btn">Apply</button>
+        </div>
+        <p id="couponMsg" class="coupon-msg"></p>
+      </div>
+
       <div onclick="cpNum()" class="nd" title="কপি করতে ক্লিক করো">
         <span style="font-size:22px;">📱</span>
         <div class="nt">01813-276507</div>
@@ -299,7 +321,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="bss">
         <div class="bs"><div class="bn">১</div> বিকাশ অ্যাপ খোলো → "Send Money" সিলেক্ট করো</div>
         <div class="bs"><div class="bn">২</div> নম্বর: <strong style="color:var(--text);">01813-276507</strong> লিখো</div>
-        <div class="bs"><div class="bn">৩</div> Amount: <strong style="color:var(--text);">৪৯৯ টাকা</strong> লিখো এবং পেমেন্ট করো</div>
+        <div class="bs"><div class="bn">৩</div> Amount: <strong style="color:var(--text);"><span id="stepAmtBs">১২৯৯</span> টাকা</strong> লিখো এবং পেমেন্ট করো</div>
         <div class="bs"><div class="bn">৪</div> Transaction ID নোট করো</div>
         <div class="bs"><div class="bn">৫</div> তোমার নম্বর + TrxID দিয়ে এডমিনকে WhatsApp করো</div>
       </div>
@@ -384,7 +406,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2 class="ctat">তোমার <span class="grad">ভাইরাল</span> জার্নি আজই শুরু হোক!</h2>
     <p class="ctasc">ডাউনলোড করো, পেমেন্ট করো এবং ৬০ দিনের চ্যালেঞ্জে যোগ দাও।</p>
     <a href="download.html" class="db">⬇ FYP King ডাউনলোড করো</a>
-    <p class="cnote">✅ Android সাপোর্টেড &nbsp;•&nbsp; ✅ বাংলায় সব কিছু &nbsp;•&nbsp; ✅ একটিভেশন মাত্র ৪৯৯৳</p>
+    <p class="cnote">✅ Android সাপোর্টেড &nbsp;•&nbsp; ✅ বাংলায় সব কিছু &nbsp;•&nbsp; ✅ একটিভেশন মাত্র ১২৯৯৳</p>
   </div>
 </section>
 
@@ -398,7 +420,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="fbar">
   <div class="fbi">
     <div class="fbic"><img src="logo-192.png" alt="FYP King" style="width:28px;height:28px;border-radius:7px;object-fit:cover;"></div>
-    <div><div class="fbn">FYP King</div><div class="fbs">ফ্রি ডাউনলোড • একটিভেশন ৪৯৯৳</div></div>
+    <div><div class="fbn">FYP King</div><div class="fbs">ফ্রি ডাউনলোড • একটিভেশন ১২৯৯৳</div></div>
   </div>
   <a href="download.html" class="fbb">⬇ ডাউনলোড</a>
 </div>
@@ -426,6 +448,44 @@ function showT(){
   var t=document.getElementById('toast');
   t.classList.add('show');
   setTimeout(function(){t.classList.remove('show');},2500);
+}
+
+/* ===== COUPON LOGIC ===== */
+var COUPON_CODE='FYP60';
+var ORIGINAL_PRICE='১২৯৯';
+var DISCOUNT_PRICE='৪৯৯';
+var couponApplied=false;
+
+function applyCoupon(){
+  var input=document.getElementById('couponInput');
+  var msg=document.getElementById('couponMsg');
+  var code=input.value.trim().toUpperCase();
+
+  if(code===''){
+    msg.textContent='একটি কুপন কোড লিখো।';
+    msg.className='coupon-msg err';
+    return;
+  }
+  if(code!==COUPON_CODE){
+    msg.textContent='❌ ভুল কুপন কোড! আবার চেক করো।';
+    msg.className='coupon-msg err';
+    return;
+  }
+  if(couponApplied){
+    msg.textContent='✅ কুপন আগেই প্রয়োগ করা হয়েছে!';
+    msg.className='coupon-msg ok';
+    return;
+  }
+  couponApplied=true;
+  document.getElementById('priceDisplay').innerHTML='<span class="price-old">৳ '+ORIGINAL_PRICE+'</span>৳ '+DISCOUNT_PRICE;
+  var s2=document.getElementById('stepAmt2'); if(s2)s2.textContent=DISCOUNT_PRICE;
+  var s3=document.getElementById('stepAmt3'); if(s3)s3.textContent=DISCOUNT_PRICE;
+  var sb=document.getElementById('stepAmtBs'); if(sb)sb.textContent=DISCOUNT_PRICE;
+  var ha=document.getElementById('headAmt'); if(ha)ha.textContent=DISCOUNT_PRICE;
+  msg.textContent='🎉 কুপন প্রয়োগ হয়েছে! এখন শুধু '+DISCOUNT_PRICE+' টাকা দিতে হবে!';
+  msg.className='coupon-msg ok';
+  input.disabled=true;
+  if(typeof dlPush==='function'){dlPush('coupon_applied',{code:COUPON_CODE});}
 }
 
 var obs=new IntersectionObserver(function(entries){
