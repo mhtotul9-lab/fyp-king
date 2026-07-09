@@ -66,6 +66,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 20px;display:f
 .nb:hover{transform:scale(1.04);box-shadow:0 6px 28px rgba(224,64,251,.55);}
 
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 20px 80px;position:relative;z-index:1;}
+
+/* ── HERO VIDEO (mobile-size card) ── */
+.hv-wrap{width:100%;max-width:300px;margin:0 auto 28px;border-radius:24px;overflow:hidden;position:relative;background:#000;border:1px solid var(--gb);box-shadow:0 0 0 1px rgba(255,255,255,.05),0 8px 40px rgba(0,0,0,.6),0 0 60px rgba(124,77,255,.18);}
+.hv-wrap::before{content:'';position:absolute;inset:-1px;border-radius:25px;z-index:2;pointer-events:none;background:linear-gradient(135deg,var(--p1),var(--p2),var(--p3),var(--p1));background-size:300% 300%;animation:hvGlow 4s linear infinite;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:1.5px;}
+@keyframes hvGlow{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+.hv-wrap video{width:100%;display:block;border-radius:22px;aspect-ratio:9/16;object-fit:cover;background:#000;}
+.hv-mute{position:absolute;top:12px;right:12px;z-index:5;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);border-radius:50px;padding:6px 12px;font-size:11px;color:rgba(255,255,255,.85);font-weight:700;display:flex;align-items:center;gap:5px;cursor:pointer;transition:all .2s;user-select:none;font-family:'Hind Siliguri',sans-serif;}
+.hv-mute:hover{background:rgba(255,255,255,.15);}
+.hv-progress{position:absolute;bottom:0;left:0;right:0;height:3px;z-index:5;background:rgba(255,255,255,.15);}
+.hv-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--p1),var(--p3));transition:width .3s linear;}
+.hv-overlay{position:absolute;inset:0;z-index:4;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.4);backdrop-filter:blur(2px);border-radius:22px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s;}
+.hv-overlay.show{opacity:1;pointer-events:all;}
+.hv-play{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;backdrop-filter:blur(10px);transition:transform .2s;}
+.hv-play:hover{transform:scale(1.1);}
+.hv-caption{font-size:12px;color:var(--dim);text-align:center;margin:0 auto 6px;display:flex;align-items:center;justify-content:center;gap:6px;max-width:300px;}
+.hv-caption span{color:var(--p1);font-weight:600;}
 .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,215,64,.4);background:rgba(255,215,64,.08);backdrop-filter:blur(12px);color:var(--gold);padding:8px 20px;border-radius:50px;font-size:13px;font-weight:700;margin-bottom:28px;animation:bPulse 2.5s ease-in-out infinite;}
 @keyframes bPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,215,64,0);}50%{box-shadow:0 0 0 5px rgba(255,215,64,.12);}}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:blnk 1.4s infinite;}
@@ -235,6 +251,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- HERO -->
 <section class="hero">
   <div class="w">
+
+    <!-- HERO VIDEO -->
+    <div class="hv-wrap au">
+      <video
+        id="heroVid"
+        src="hero-video.mp4"
+        playsinline
+        muted
+        autoplay
+        loop
+        preload="auto"
+      ></video>
+
+      <div class="hv-mute" id="hvMuteBtn" onclick="hvToggleMute()">
+        <span id="hvMuteIcon">🔇</span>
+        <span id="hvMuteText">সাউন্ড চালু করো</span>
+      </div>
+
+      <div class="hv-overlay" id="hvPlayOverlay" onclick="hvPlayVid()">
+        <div class="hv-play">▶</div>
+      </div>
+
+      <div class="hv-progress">
+        <div class="hv-progress-fill" id="hvProgressFill"></div>
+      </div>
+    </div>
+    <p class="hv-caption au">🎬 <span>Auto Play</span> হচ্ছে — শব্দ শুনতে ট্যাপ করো</p>
+
     <div class="badge au"><div class="dot"></div> ৬০ দিনে ভাইরাল গ্যারান্টি</div>
     <h1 class="au d1">কন্টেন্ট বানাও,<br><span class="grad">ভাইরাল হও,</span><br>ইনকাম করো!</h1>
     <p class="hsub au d2">TikTok, Facebook Reels ও YouTube Shorts-এ ভাইরাল হওয়ার সবচেয়ে শক্তিশালী অ্যাপ। ৬০ দিনের চ্যালেঞ্জে যোগ দাও এবং তোমার স্বপ্নের ক্যারিয়ার শুরু করো।</p>
@@ -518,6 +562,73 @@ function dlPush(eventName, params){
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push(Object.assign({event: eventName}, params || {}));
 }
+
+/* ===== HERO VIDEO ===== */
+(function(){
+  var vid=document.getElementById('heroVid');
+  var muteBtn=document.getElementById('hvMuteBtn');
+  var muteIcon=document.getElementById('hvMuteIcon');
+  var muteText=document.getElementById('hvMuteText');
+  var playOverlay=document.getElementById('hvPlayOverlay');
+  var progressFill=document.getElementById('hvProgressFill');
+  if(!vid) return;
+
+  // Autoplay muted (works on all browsers), show play button if blocked
+  vid.muted=true;
+  var tryPlay=function(){
+    vid.play().catch(function(){ playOverlay.classList.add('show'); });
+  };
+  if(document.readyState==='complete'){ tryPlay(); }
+  else { window.addEventListener('load', tryPlay); }
+
+  window.hvToggleMute=function(){
+    if(vid.muted){
+      vid.muted=false;
+      muteIcon.textContent='🔊';
+      muteText.textContent='শুনছো';
+      muteBtn.style.background='rgba(124,77,255,.4)';
+      muteBtn.style.borderColor='rgba(124,77,255,.6)';
+      dlPush('hero_video_unmute');
+    } else {
+      vid.muted=true;
+      muteIcon.textContent='🔇';
+      muteText.textContent='সাউন্ড চালু করো';
+      muteBtn.style.background='';
+      muteBtn.style.borderColor='';
+    }
+  };
+
+  window.hvPlayVid=function(){
+    vid.play();
+    playOverlay.classList.remove('show');
+  };
+
+  vid.addEventListener('click', function(){
+    if(vid.paused){ vid.play(); playOverlay.classList.remove('show'); }
+    else { vid.pause(); playOverlay.classList.add('show'); }
+  });
+
+  vid.addEventListener('timeupdate', function(){
+    if(vid.duration){
+      progressFill.style.width=((vid.currentTime/vid.duration)*100)+'%';
+    }
+  });
+
+  // Milestone tracking (25/50/75/100%)
+  var milestones={25:false,50:false,75:false,100:false};
+  vid.addEventListener('timeupdate', function(){
+    if(!vid.duration) return;
+    var pct=Math.floor((vid.currentTime/vid.duration)*100);
+    [25,50,75].forEach(function(m){
+      if(pct>=m && !milestones[m]){
+        milestones[m]=true;
+        dlPush('hero_video_progress', {percent:m});
+        if(window.fbq) fbq('trackCustom','HeroVideoWatch'+m);
+        if(window.ttq) ttq.track('ViewContent');
+      }
+    });
+  });
+})();
 
 // 1) APK Download button clicks
 document.querySelectorAll('a[href*="download.html"]').forEach(function(btn){
