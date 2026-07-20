@@ -74,6 +74,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 20px;display:f
 .hv-wrap video{width:100%;display:block;border-radius:22px;aspect-ratio:9/16;object-fit:cover;background:#000;}
 .hv-mute{position:absolute;top:12px;right:12px;z-index:5;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);border-radius:50px;padding:6px 12px;font-size:11px;color:rgba(255,255,255,.85);font-weight:700;display:flex;align-items:center;gap:5px;cursor:pointer;transition:all .2s;user-select:none;font-family:'Hind Siliguri',sans-serif;}
 .hv-mute:hover{background:rgba(255,255,255,.15);}
+.hv-mute-cta{top:auto;bottom:16px;left:50%;right:auto;transform:translateX(-50%);padding:10px 20px;font-size:13px;background:linear-gradient(135deg,var(--p1),var(--p2));border-color:rgba(255,255,255,.4);box-shadow:0 4px 20px rgba(124,77,255,.5);animation:hvCtaPulse 1.6s ease-in-out infinite;}
+.hv-mute-cta:hover{background:linear-gradient(135deg,var(--p1),var(--p2));transform:translateX(-50%) scale(1.05);}
+@keyframes hvCtaPulse{0%,100%{box-shadow:0 4px 20px rgba(124,77,255,.5);}50%{box-shadow:0 4px 30px rgba(124,77,255,.9),0 0 0 6px rgba(124,77,255,.15);}}
 .hv-progress{position:absolute;bottom:0;left:0;right:0;height:3px;z-index:5;background:rgba(255,255,255,.15);}
 .hv-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--p1),var(--p3));transition:width .3s linear;}
 .hv-overlay{position:absolute;inset:0;z-index:4;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.4);backdrop-filter:blur(2px);border-radius:22px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s;}
@@ -259,25 +262,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         src="hero-video.mp4"
         playsinline
         muted
-        autoplay
         loop
         preload="auto"
       ></video>
 
-      <div class="hv-mute" id="hvMuteBtn" onclick="hvToggleMute()">
-        <span id="hvMuteIcon">🔇</span>
-        <span id="hvMuteText">সাউন্ড চালু করো</span>
+      <div class="hv-mute hv-mute-cta" id="hvMuteBtn" onclick="hvToggleMute()">
+        <span id="hvMuteIcon">🔊</span>
+        <span id="hvMuteText">সাউন্ড অন করো</span>
       </div>
 
-      <div class="hv-overlay" id="hvPlayOverlay" onclick="hvPlayVid()">
-        <div class="hv-play">▶</div>
+      <div class="hv-overlay show" id="hvPlayOverlay" onclick="hvToggleMute()">
+        <div class="hv-play">🔊</div>
       </div>
 
       <div class="hv-progress">
         <div class="hv-progress-fill" id="hvProgressFill"></div>
       </div>
     </div>
-    <p class="hv-caption au">🎬 <span>Auto Play</span> হচ্ছে — শব্দ শুনতে ট্যাপ করো</p>
+    <p class="hv-caption au">👆 <span>সাউন্ড অন করো</span> বাটনে ট্যাপ করলেই ভিডিও অটোমেটিক প্লে হবে — এখনই ট্যাপ করো!</p>
 
     <div class="badge au"><div class="dot"></div> ৬০ দিনে ভাইরাল গ্যারান্টি</div>
     <h1 class="au d1">কন্টেন্ট বানাও,<br><span class="grad">ভাইরাল হও,</span><br>ইনকাম করো!</h1>
@@ -573,39 +575,49 @@ function dlPush(eventName, params){
   var progressFill=document.getElementById('hvProgressFill');
   if(!vid) return;
 
-  // Autoplay muted (works on all browsers), show play button if blocked
+  // Video stays paused and muted until the user taps "সাউন্ড অন করো".
+  // That single tap both unmutes AND starts autoplay.
   vid.muted=true;
-  var tryPlay=function(){
-    vid.play().catch(function(){ playOverlay.classList.add('show'); });
-  };
-  if(document.readyState==='complete'){ tryPlay(); }
-  else { window.addEventListener('load', tryPlay); }
+  var started=false;
 
   window.hvToggleMute=function(){
-    if(vid.muted){
+    if(!started){
+      // First tap: unmute + start playing automatically
+      started=true;
+      vid.muted=false;
+      vid.play().catch(function(){
+        // Some browsers block unmuted autoplay without a direct gesture retry;
+        // this call is itself inside the click handler so it should succeed.
+        vid.play();
+      });
+      muteIcon.textContent='🔊';
+      muteText.textContent='সাউন্ড অন আছে';
+      muteBtn.style.background='rgba(124,77,255,.4)';
+      muteBtn.style.borderColor='rgba(124,77,255,.6)';
+      muteBtn.style.animation='none';
+      playOverlay.classList.remove('show');
+      dlPush('hero_video_unmute');
+      dlPush('hero_video_play');
+    } else if(vid.muted){
       vid.muted=false;
       muteIcon.textContent='🔊';
-      muteText.textContent='শুনছো';
+      muteText.textContent='সাউন্ড অন আছে';
       muteBtn.style.background='rgba(124,77,255,.4)';
       muteBtn.style.borderColor='rgba(124,77,255,.6)';
       dlPush('hero_video_unmute');
     } else {
       vid.muted=true;
       muteIcon.textContent='🔇';
-      muteText.textContent='সাউন্ড চালু করো';
+      muteText.textContent='সাউন্ড অফ আছে';
       muteBtn.style.background='';
       muteBtn.style.borderColor='';
     }
   };
 
-  window.hvPlayVid=function(){
-    vid.play();
-    playOverlay.classList.remove('show');
-  };
-
   vid.addEventListener('click', function(){
-    if(vid.paused){ vid.play(); playOverlay.classList.remove('show'); }
-    else { vid.pause(); playOverlay.classList.add('show'); }
+    if(!started) return; // ignore taps on the video itself until sound is turned on
+    if(vid.paused){ vid.play(); }
+    else { vid.pause(); }
   });
 
   vid.addEventListener('timeupdate', function(){
