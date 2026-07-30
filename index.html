@@ -87,13 +87,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 20px;display:f
 .hv-caption span{color:var(--p1);font-weight:600;}
 
 /* ── POST-VIDEO OFFER CARD (premium value stack) ── */
-.offer-card{max-width:420px;margin:0 auto 28px;position:relative;border-radius:26px;padding:2px;background:linear-gradient(115deg,#7c4dff,#ffd740 30%,#e040fb 60%,#00e5ff 85%,#7c4dff);background-size:300% 300%;animation:offerBorderFlow 8s ease infinite;box-shadow:0 14px 50px rgba(0,0,0,.55),0 0 60px rgba(255,215,64,.12);}
+.offer-card{max-width:420px;margin:38px auto 28px;position:relative;border-radius:26px;padding:2px;background:linear-gradient(115deg,#7c4dff,#ffd740 30%,#e040fb 60%,#00e5ff 85%,#7c4dff);background-size:300% 300%;animation:offerBorderFlow 8s ease infinite;box-shadow:0 14px 50px rgba(0,0,0,.55),0 0 60px rgba(255,215,64,.12);}
 @keyframes offerBorderFlow{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 .offer-body{position:relative;border-radius:24px;padding:26px 22px 22px;background:radial-gradient(120% 100% at 15% 0%,rgba(224,64,251,.14),transparent 55%),linear-gradient(180deg,#171426,#0a0913 65%);text-align:left;overflow:hidden;}
 .offer-body::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(115deg,transparent,rgba(255,255,255,.08),transparent);transform:skewX(-18deg);animation:offerShine 5s ease-in-out infinite;pointer-events:none;}
 @keyframes offerShine{0%{left:-60%;}35%,100%{left:130%;}}
-.offer-badge{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;font-size:12px;font-weight:800;padding:7px 18px;border-radius:50px;white-space:nowrap;box-shadow:0 4px 18px rgba(224,64,251,.5),0 0 0 4px #0a0913;font-family:'Hind Siliguri',sans-serif;letter-spacing:.2px;z-index:2;}
-.offer-title{font-size:16px;font-weight:800;color:var(--text);margin:10px 0 16px;letter-spacing:.1px;}
+.offer-badge{position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;font-size:12px;font-weight:800;padding:7px 18px;border-radius:50px;white-space:nowrap;box-shadow:0 4px 18px rgba(224,64,251,.5),0 0 0 4px #0a0913;font-family:'Hind Siliguri',sans-serif;letter-spacing:.2px;z-index:3;}
+.offer-title{position:relative;z-index:1;font-size:16px;font-weight:800;color:var(--text);margin:10px 0 16px;letter-spacing:.1px;}
 .offer-title b{color:var(--gold);font-weight:800;}
 .offer-list{display:flex;flex-direction:column;position:relative;z-index:1;}
 .offer-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px dashed rgba(255,255,255,.13);}
@@ -315,8 +315,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- POST-VIDEO OFFER CARD -->
     <div class="offer-card au">
+      <div class="offer-badge">🔥 আজকের স্পেশাল অফার</div>
       <div class="offer-body">
-        <div class="offer-badge">🔥 আজকের স্পেশাল অফার</div>
         <div class="offer-title">এই <b>৳৪৯৯</b> টাকায় আপনি পাচ্ছেন:</div>
 
         <div class="offer-list">
